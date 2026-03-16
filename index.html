@@ -1309,6 +1309,19 @@
     }
 
     @media (max-width: 640px) {
+      /* When open, make <nav> itself the solid full-screen overlay */
+      nav:has(.nav-links.open) {
+        background: var(--bg);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        height: 100dvh;
+        height: 100vh;
+      }
+
+      body:has(.nav-links.open) {
+        overflow: hidden;
+      }
+
       .nav-links {
         display: none;
         position: fixed;
@@ -1319,9 +1332,9 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background: rgba(250, 248, 245, 0.98);
+        background: transparent;
         gap: 2.2rem;
-        z-index: 199;
+        z-index: 500;
       }
 
       .nav-links a {
@@ -1334,7 +1347,14 @@
 
       .nav-toggle {
         display: flex;
-        z-index: 201;
+        position: relative;
+        z-index: 600;
+      }
+
+      .hero-eyebrow {
+        font-size: .62rem;
+        padding: .28rem .65rem;
+        letter-spacing: .1em;
       }
 
       .hero-ctas {
